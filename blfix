@@ -1,0 +1,25 @@
+#!/bin/bash
+
+FILE="/etc/locale.conf"
+
+echo "---- [locale_cleanup.sh] Started at $(date) ----"
+
+if [ ! -f "$FILE" ]; then
+  echo "$FILE not found."
+  exit 1
+fi
+
+current_lang=$(grep '^LANG=' "$FILE" | cut -d '=' -f2)
+
+if [[ "${current_lang,,}" == *utf* ]]; then
+  echo "✅ LANG already contains UTF: $current_lang"
+else
+  echo "🔧 Updating LANG from '$current_lang' to '${current_lang}.UTF-8'"
+  sed -i "s|^LANG=.*|LANG=${current_lang}.UTF-8|" "$FILE"
+fi
+
+new_lang=$(grep '^LANG=' "$FILE")
+echo "🔍 Final LANG line: $new_lang"
+echo "---- [locale_cleanup.sh] Completed ----"
+
+exit 0

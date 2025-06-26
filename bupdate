@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SOURCE_CONFIGS="/usr/share/berserk-arch"
+DEST_CONFIGS="$HOME"
+
+echo "This will copy the latest default Berserk Arch configuration files to your home directory."
+echo ""
+echo "WARNING: This will overwrite your existing personal configurations for your home directory: $HOME"
+echo ""
+echo "Since cloning complete $HOME for backup is not rational, make backup before-hand!!!"
+echo ""
+read -p "Are you sure you want to continue? [y/N]: " -n 1 -r
+echo ""
+echo ""
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "Copying new default configurations..."
+  echo ""
+  rsync -a --info=progress2 "$SOURCE_CONFIGS/home/skel/" "$DEST_CONFIGS/"
+  echo ""
+  echo "Done! You may need to log out and log back in for all changes to take effect."
+else
+  echo "Operation cancelled."
+fi
