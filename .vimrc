@@ -77,4 +77,5 @@ nnoremap <leader>sc :Commands<CR>
 nnoremap <leader>sh :History:<CR>
 
 " register
+cnoremap <Esc><Space> <C-r>
 nnoremap <leader>lr :reg<CR>
