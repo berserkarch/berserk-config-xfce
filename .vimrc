@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
