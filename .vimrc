@@ -75,3 +75,6 @@ nnoremap <leader>fs :w<CR>
 nnoremap <leader>st :Rg<CR>
 nnoremap <leader>sc :Commands<CR>
 nnoremap <leader>sh :History:<CR>
+
+" register
+nnoremap <leader>lr :reg<CR>
